@@ -1,21 +1,41 @@
 package com.mycompany.mainmenu;
 
+import java.io.FileNotFoundException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javax.swing.DefaultListModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author kyrad
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
     public MainMenu() {
+
         initComponents();
+
+//        try {
+//            updateAccountsList1();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+    }
+
+    public void updateAccountsList1() throws FileNotFoundException {
+//        String[] list1 = ListManager.getAccountsList1();
+//        DefaultListModel AccountModel1 = new DefaultListModel();
+//        for (int i = 0; i < list1.length; i++) {
+//            AccountModel1.addElement(list1[i]);
+//
+//        }
+//
+//        AccountsList1.setModel(AccountModel1);
     }
 
     /**
@@ -56,6 +76,7 @@ public class MainMenu extends javax.swing.JFrame {
         AddAccLabel = new javax.swing.JLabel();
         AddButton2 = new javax.swing.JButton();
         SwitchAccLabel = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         MonthFilterCB = new javax.swing.JComboBox<>();
         YearFilterCB = new javax.swing.JComboBox<>();
@@ -92,7 +113,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         AccountsPane.setBackground(new java.awt.Color(255, 153, 255));
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(246, 246, 238));
 
         HeyLabel.setBackground(new java.awt.Color(51, 153, 255));
         HeyLabel.setText("Hey,");
@@ -101,7 +122,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         GoalsButton.setText("Goals");
 
-        jProgressBar1.setBackground(new java.awt.Color(255, 153, 0));
+        jProgressBar1.setBackground(new java.awt.Color(162, 193, 236));
 
         NotesLabel.setText("Notes");
 
@@ -199,7 +220,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         AccountsPane.addTab("Dashboard", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel4.setBackground(new java.awt.Color(139, 195, 132));
 
         AccountList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -228,6 +249,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         SwitchAccLabel.setText("Switch to existing account :");
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -241,13 +264,16 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(AllAccList, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(AddAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SignUpButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SwitchAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +287,9 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(SignUpButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AddButton2)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AddButton2)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addComponent(SwitchAccLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -464,7 +492,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_AmountCBActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        // TODO add your handling code here:
+        // Transaction
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
@@ -472,7 +500,17 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-        // TODO add your handling code here:
+//        try {
+//            //Transaction
+//            
+//            String selectedAccount = AccountsList1.getSelectedValue();
+//            ListManager.deleteAccount(selectedAccount);
+//            updateAccountsList1();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+       
+        
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void LoginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButton2ActionPerformed
@@ -567,5 +605,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

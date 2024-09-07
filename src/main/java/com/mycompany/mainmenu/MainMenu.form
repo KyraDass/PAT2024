@@ -75,7 +75,7 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="33" type="rgb"/>
+              <Color blue="ee" green="f6" red="f6" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -199,7 +199,7 @@
             <Component class="javax.swing.JProgressBar" name="jProgressBar1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="99" red="ff" type="rgb"/>
+                  <Color blue="ec" green="c1" red="a2" type="rgb"/>
                 </Property>
               </Properties>
             </Component>
@@ -293,7 +293,7 @@
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="33" type="rgb"/>
+              <Color blue="84" green="c3" red="8b" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -318,15 +318,19 @@
                       </Group>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="LoginButton2" min="-2" pref="125" max="-2" attributes="0"/>
-                              <Component id="AddButton2" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="LoginButton2" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="AddButton2" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField1" min="-2" pref="178" max="-2" attributes="0"/>
                           </Group>
                           <Component id="AddAccLabel" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                           <Component id="SignUpButton2" min="-2" pref="125" max="-2" attributes="0"/>
                           <Component id="SwitchAccLabel" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="323" max="32767" attributes="0"/>
+                      <EmptySpace pref="157" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -343,7 +347,10 @@
                           <Group type="102" attributes="0">
                               <Component id="SignUpButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="AddButton2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="AddButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="SwitchAccLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -425,6 +432,11 @@
             <Component class="javax.swing.JLabel" name="SwitchAccLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Switch to existing account :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextField1"/>
               </Properties>
             </Component>
           </SubComponents>
