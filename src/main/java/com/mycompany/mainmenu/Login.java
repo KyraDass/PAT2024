@@ -15,6 +15,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        
+        
+       
     }
 
     /**
@@ -48,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel2.setLayout(null);
 
-        jPanel3.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel3.setBackground(new java.awt.Color(246, 246, 238));
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -65,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jPanel3);
         jPanel3.setBounds(-10, 0, 310, 390);
 
-        RightPanel.setBackground(new java.awt.Color(255, 153, 255));
+        RightPanel.setBackground(new java.awt.Color(172, 209, 191));
         RightPanel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         RightPanel.setMinimumSize(new java.awt.Dimension(400, 500));
 
@@ -77,6 +81,11 @@ public class Login extends javax.swing.JFrame {
         EmailLabel.setText("Email");
 
         LoginButton.setText("Login");
+        LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LoginButtonMouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("I dont have an account");
 
@@ -184,6 +193,12 @@ public class Login extends javax.swing.JFrame {
             SignUpFrame.setLocationRelativeTo(null);
             this.dispose();
     }//GEN-LAST:event_SignUpButtonActionPerformed
+
+    private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_LoginButtonMouseClicked
 
     /**
      * @param args the command line arguments
