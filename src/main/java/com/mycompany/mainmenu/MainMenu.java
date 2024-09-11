@@ -1,6 +1,9 @@
 package com.mycompany.mainmenu;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import javax.swing.DefaultListModel;
@@ -24,7 +27,6 @@ public class MainMenu extends javax.swing.JFrame {
 //        } catch (FileNotFoundException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
     }
 
     public void updateAccountsList1() throws FileNotFoundException {
@@ -76,7 +78,7 @@ public class MainMenu extends javax.swing.JFrame {
         AddAccLabel = new javax.swing.JLabel();
         AddButton2 = new javax.swing.JButton();
         SwitchAccLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TextFieldAcc = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         MonthFilterCB = new javax.swing.JComboBox<>();
         YearFilterCB = new javax.swing.JComboBox<>();
@@ -227,6 +229,11 @@ public class MainMenu extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        AccountList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                AccountList2ValueChanged(evt);
+            }
+        });
         jScrollPane5.setViewportView(AccountList2);
 
         AllAccList.setText("All Accounts");
@@ -246,10 +253,15 @@ public class MainMenu extends javax.swing.JFrame {
         AddAccLabel.setText("Add an account :");
 
         AddButton2.setText("Add");
+        AddButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddButton2MouseClicked(evt);
+            }
+        });
 
         SwitchAccLabel.setText("Switch to existing account :");
 
-        jTextField1.setText("jTextField1");
+        TextFieldAcc.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -269,7 +281,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(AddAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SignUpButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SwitchAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,7 +301,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AddButton2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addComponent(SwitchAccLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -509,8 +521,8 @@ public class MainMenu extends javax.swing.JFrame {
 //        } catch (FileNotFoundException ex) {
 //            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-       
-        
+
+
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     private void LoginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButton2ActionPerformed
@@ -520,6 +532,38 @@ public class MainMenu extends javax.swing.JFrame {
     private void MonthFilterCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthFilterCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MonthFilterCBActionPerformed
+
+    private void AccountList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AccountList2ValueChanged
+
+        try {
+            //Account
+            String selectedAccount = AccountsList1.getSelectedValue();
+            AccountsManager.deleteAccount(selectedAccount);
+            updateAccountsList1();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_AccountList2ValueChanged
+
+    private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked
+        // TODO add your handling code here:
+        String  newAccount = TextFieldAcc.getText();
+        try {
+            AccountsManager.addAccount(newAccount);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            updateAccountsList1();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_AddButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -586,6 +630,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JRadioButton OutRadioButton;
     private javax.swing.JButton SignUpButton2;
     private javax.swing.JLabel SwitchAccLabel;
+    private javax.swing.JTextField TextFieldAcc;
     private javax.swing.JComboBox<String> ToCB;
     private javax.swing.JLabel ToLabel;
     private javax.swing.JLabel TotalsLabel;
@@ -605,6 +650,5 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

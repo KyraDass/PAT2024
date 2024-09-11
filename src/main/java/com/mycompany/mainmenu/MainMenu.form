@@ -324,7 +324,7 @@
                                   <Component id="AddButton2" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="178" max="-2" attributes="0"/>
+                              <Component id="TextFieldAcc" min="-2" pref="178" max="-2" attributes="0"/>
                           </Group>
                           <Component id="AddAccLabel" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                           <Component id="SignUpButton2" min="-2" pref="125" max="-2" attributes="0"/>
@@ -349,7 +349,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="AddButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextFieldAcc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="SwitchAccLabel" min="-2" max="-2" attributes="0"/>
@@ -385,6 +385,9 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="AccountList2ValueChanged"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -428,13 +431,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddButton2MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="SwitchAccLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Switch to existing account :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="TextFieldAcc">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jTextField1"/>
               </Properties>
