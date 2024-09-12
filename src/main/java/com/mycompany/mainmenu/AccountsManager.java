@@ -16,10 +16,12 @@ import java.util.Scanner;
  * @author kyrad
  */
 public class AccountsManager {
+    
+    public static String fileName = "Data\\AccountList.txt";
 
     public static String[] getAccounts() throws FileNotFoundException {
 
-        File accountsFile = new File("Data//AccountList.txt");
+        File accountsFile = new File(fileName);
         Scanner accountSc = new Scanner(accountsFile);
 
         int count = 0;
@@ -36,22 +38,22 @@ public class AccountsManager {
             account[i] = accountSc.next();
 
         }
-        return null;
+        return account;
     }
 
     public static void deleteAccount(String account) throws FileNotFoundException, IOException {
-        File accountsFile = new File("Data//AccountList.txt");
+        File accountsFile = new File(fileName);
         Scanner accountSc = new Scanner(accountsFile);
 
         String line = "";
         while (accountSc.hasNext()) {
             String currentAccount = accountSc.next();
             if (!currentAccount.equals(account)) {
-                line = line + currentAccount + "";
+                line = line + currentAccount + " ";
 
             }
 
-            FileWriter accountFileWriter = new FileWriter("Data//AccountList.txt");
+            FileWriter accountFileWriter = new FileWriter(fileName);
             PrintWriter pw = new PrintWriter(accountFileWriter);
             pw.write(line);
             pw.close();
@@ -61,11 +63,11 @@ public class AccountsManager {
     }
 
     public static void addAccount(String account) throws FileNotFoundException, IOException {
-        File accountsFile = new File("Data//AccountList.txt");
+        File accountsFile = new File(fileName);
         Scanner accountSc = new Scanner(accountsFile);
         String line = accountSc.nextLine() + " " + account;
 
-        FileWriter accountFileWriter = new FileWriter("Data//AccountList.txt");
+        FileWriter accountFileWriter = new FileWriter(fileName);
         PrintWriter pw = new PrintWriter(accountFileWriter);
         pw.write(line);
         pw.close();
