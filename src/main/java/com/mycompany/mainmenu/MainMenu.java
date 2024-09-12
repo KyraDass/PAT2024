@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import javax.swing.DefaultListModel;
@@ -22,22 +23,23 @@ public class MainMenu extends javax.swing.JFrame {
 
         initComponents();
 
-//        try {
-//            updateAccountsList1();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            updateAccountsList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void updateAccountsList1() throws FileNotFoundException {
-//        String[] list1 = ListManager.getAccountsList1();
-//        DefaultListModel AccountModel1 = new DefaultListModel();
-//        for (int i = 0; i < list1.length; i++) {
-//            AccountModel1.addElement(list1[i]);
-//
-//        }
-//
-//        AccountsList1.setModel(AccountModel1);
+    public void updateAccountsList() throws FileNotFoundException {
+        String[] list1 = AccountsManager.getAccounts();
+        DefaultListModel AccountsModel = new DefaultListModel();
+        for (int i = 0; i < list1.length; i++) {
+            AccountsModel.addElement(list1[i]);
+
+        }
+
+        AccountsList1.setModel(AccountsModel);
+        AccountsList2.setModel(AccountsModel);
     }
 
     /**
@@ -64,13 +66,13 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         AccountsList1 = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        AmountList1 = new javax.swing.JList<>();
+        AmountList = new javax.swing.JList<>();
         TotalsLabel = new javax.swing.JLabel();
         YearOverviewLabel = new javax.swing.JLabel();
         YearOverviewButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        AccountList2 = new javax.swing.JList<>();
+        AccountsList2 = new javax.swing.JList<>();
         AllAccList = new javax.swing.JLabel();
         DeleteButton2 = new javax.swing.JButton();
         LoginButton2 = new javax.swing.JButton();
@@ -78,7 +80,7 @@ public class MainMenu extends javax.swing.JFrame {
         AddAccLabel = new javax.swing.JLabel();
         AddButton2 = new javax.swing.JButton();
         SwitchAccLabel = new javax.swing.JLabel();
-        TextFieldAcc = new javax.swing.JTextField();
+        textFieldAcc = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         MonthFilterCB = new javax.swing.JComboBox<>();
         YearFilterCB = new javax.swing.JComboBox<>();
@@ -123,6 +125,11 @@ public class MainMenu extends javax.swing.JFrame {
         AccountsLabel1.setText("Accounts");
 
         GoalsButton.setText("Goals");
+        GoalsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoalsButtonActionPerformed(evt);
+            }
+        });
 
         jProgressBar1.setBackground(new java.awt.Color(162, 193, 236));
 
@@ -139,12 +146,17 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(AccountsList1);
 
-        AmountList1.setModel(new javax.swing.AbstractListModel<String>() {
+        AmountList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(AmountList1);
+        AmountList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                AmountListValueChanged(evt);
+            }
+        });
+        jScrollPane4.setViewportView(AmountList);
 
         TotalsLabel.setText("Totals");
 
@@ -224,22 +236,27 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(139, 195, 132));
 
-        AccountList2.setModel(new javax.swing.AbstractListModel<String>() {
+        AccountsList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        AccountList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        AccountsList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                AccountList2ValueChanged(evt);
+                AccountsList2ValueChanged(evt);
             }
         });
-        jScrollPane5.setViewportView(AccountList2);
+        jScrollPane5.setViewportView(AccountsList2);
 
         AllAccList.setText("All Accounts");
         AllAccList.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         DeleteButton2.setText("Delete");
+        DeleteButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButton2ActionPerformed(evt);
+            }
+        });
 
         LoginButton2.setText("Log in");
         LoginButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +278,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         SwitchAccLabel.setText("Switch to existing account :");
 
-        TextFieldAcc.setText("jTextField1");
+        textFieldAcc.setText(" ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -281,7 +298,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(TextFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(AddAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SignUpButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SwitchAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -301,7 +318,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AddButton2)
-                            .addComponent(TextFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textFieldAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addComponent(SwitchAccLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -533,37 +550,53 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MonthFilterCBActionPerformed
 
-    private void AccountList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AccountList2ValueChanged
+    private void AccountsList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AccountsList2ValueChanged
 
-        try {
-            //Account
-            String selectedAccount = AccountsList1.getSelectedValue();
-            AccountsManager.deleteAccount(selectedAccount);
-            updateAccountsList1();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
-    }//GEN-LAST:event_AccountList2ValueChanged
+    }//GEN-LAST:event_AccountsList2ValueChanged
 
     private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked
         // TODO add your handling code here:
-        String  newAccount = TextFieldAcc.getText();
         try {
+            String newAccount = textFieldAcc.getText();
+            textFieldAcc.setText("");
             AccountsManager.addAccount(newAccount);
+            updateAccountsList();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
+    }//GEN-LAST:event_AddButton2MouseClicked
+
+    private void DeleteButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButton2ActionPerformed
         try {
-            updateAccountsList1();
+            //Account
+            String selectedAccount = AccountsList2.getSelectedValue();
+            AccountsManager.deleteAccount(selectedAccount);
+            updateAccountsList();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }//GEN-LAST:event_DeleteButton2ActionPerformed
+
+    private void AmountListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_AmountListValueChanged
+        // TODO add your handling code here:
         
         
-    }//GEN-LAST:event_AddButton2MouseClicked
+    }//GEN-LAST:event_AmountListValueChanged
+
+    private void GoalsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoalsButtonActionPerformed
+        // TODO add your handling code here:
+        new GoalsPopup().setVisible(true);
+        
+    }//GEN-LAST:event_GoalsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -601,16 +634,16 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> AccountList2;
     private javax.swing.JLabel AccountsLabel1;
     private javax.swing.JList<String> AccountsList1;
+    private javax.swing.JList<String> AccountsList2;
     private javax.swing.JTabbedPane AccountsPane;
     private javax.swing.JLabel AddAccLabel;
     private javax.swing.JButton AddButton;
     private javax.swing.JButton AddButton2;
     private javax.swing.JLabel AllAccList;
     private javax.swing.JComboBox<String> AmountCB;
-    private javax.swing.JList<String> AmountList1;
+    private javax.swing.JList<String> AmountList;
     private javax.swing.JButton CancelButton;
     private javax.swing.JLabel CategoryLabel;
     private java.awt.List CategoryList;
@@ -630,7 +663,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JRadioButton OutRadioButton;
     private javax.swing.JButton SignUpButton2;
     private javax.swing.JLabel SwitchAccLabel;
-    private javax.swing.JTextField TextFieldAcc;
     private javax.swing.JComboBox<String> ToCB;
     private javax.swing.JLabel ToLabel;
     private javax.swing.JLabel TotalsLabel;
@@ -650,5 +682,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField textFieldAcc;
     // End of variables declaration//GEN-END:variables
 }
