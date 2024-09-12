@@ -233,7 +233,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="AccountsList1">
+                <Component class="javax.swing.JList" name="accountsList1">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                       <StringArray count="5">
@@ -324,19 +324,14 @@
                       </Group>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="AddAccLabel" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="LoginButton2" min="-2" pref="125" max="-2" attributes="0"/>
-                                  <Component id="AddButton2" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="AddButton2" min="-2" pref="75" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="textFieldAcc" min="-2" pref="178" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="AddAccLabel" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                          <Component id="SignUpButton2" min="-2" pref="125" max="-2" attributes="0"/>
-                          <Component id="SwitchAccLabel" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace pref="207" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -350,17 +345,9 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="SignUpButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="AddButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textFieldAcc" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="SwitchAccLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="LoginButton2" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="AddButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldAcc" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane5" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
@@ -379,7 +366,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="AccountsList2">
+                <Component class="javax.swing.JList" name="accountsList2">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                       <StringArray count="5">
@@ -392,7 +379,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="AccountsList2ValueChanged"/>
+                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="accountsList2ValueChanged"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -418,19 +405,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteButton2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="LoginButton2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Log in"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginButton2ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="SignUpButton2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sign up"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="AddAccLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add an account :"/>
@@ -443,11 +417,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddButton2MouseClicked"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="SwitchAccLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Switch to existing account :"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textFieldAcc">
               <Properties>
@@ -522,8 +491,8 @@
                               <Component id="FromLabel" min="-2" pref="37" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ToCB" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FromCB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="toAccountCB" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fromAccountCB" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -546,12 +515,12 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="FromLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FromCB" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="fromAccountCB" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="ToLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ToCB" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="toAccountCB" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -754,7 +723,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="FromCB">
+            <Component class="javax.swing.JComboBox" name="fromAccountCB">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -765,11 +734,15 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fromAccountCBMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fromAccountCBActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="ToCB">
+            <Component class="javax.swing.JComboBox" name="toAccountCB">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
