@@ -30,6 +30,8 @@ public class MainMenu extends javax.swing.JFrame {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 
     public void updateAccountsComponents() throws FileNotFoundException {
         String[] accounts = AccountsManager.getAccounts();
@@ -42,9 +44,10 @@ public class MainMenu extends javax.swing.JFrame {
         accountsList1.setModel(listModel);
         accountsList2.setModel(listModel);
         
-        DefaultComboBoxModel comboModel = new DefaultComboBoxModel(accounts);
-        fromAccountCB.setModel(comboModel);
-        toAccountCB.setModel(comboModel);
+        DefaultComboBoxModel comboModel1 = new DefaultComboBoxModel(accounts);
+        fromAccountCB.setModel(comboModel1);
+        DefaultComboBoxModel comboModel2 = new DefaultComboBoxModel(accounts);
+        toAccountCB.setModel(comboModel2);
     }
 
     /**
@@ -585,7 +588,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void fromAccountCBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fromAccountCBMouseClicked
 
-        //transaction
+        
         
 
     }//GEN-LAST:event_fromAccountCBMouseClicked
