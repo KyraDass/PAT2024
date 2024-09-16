@@ -30,12 +30,10 @@ public class MainMenu extends javax.swing.JFrame {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 
     public void updateAccountsComponents() throws FileNotFoundException {
         String[] accounts = AccountsManager.getAccounts();
-        
+
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < accounts.length; i++) {
             listModel.addElement(accounts[i]);
@@ -43,7 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         accountsList1.setModel(listModel);
         accountsList2.setModel(listModel);
-        
+
         DefaultComboBoxModel comboModel1 = new DefaultComboBoxModel(accounts);
         fromAccountCB.setModel(comboModel1);
         DefaultComboBoxModel comboModel2 = new DefaultComboBoxModel(accounts);
@@ -136,7 +134,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jProgressBar1.setBackground(new java.awt.Color(162, 193, 236));
+        jProgressBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         NotesLabel.setText("Notes");
 
@@ -325,6 +323,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         YearFilterCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        TransactionTable.setAutoCreateColumnsFromModel(false);
         TransactionTable.setBackground(new java.awt.Color(51, 153, 255));
         TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -347,6 +346,11 @@ public class MainMenu extends javax.swing.JFrame {
         ToLabel.setText("To:");
 
         InRadioButton.setText("In");
+        InRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InRadioButtonMouseClicked(evt);
+            }
+        });
 
         OutRadioButton.setText("Out");
 
@@ -480,9 +484,9 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(AddButton)
                             .addComponent(CancelButton)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(DeleteButton)
                 .addContainerGap())
         );
@@ -545,7 +549,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_accountsList2ValueChanged
 
     private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked
-        // TODO add your handling code here:
+        // accounts
         try {
             String newAccount = textFieldAcc.getText();
             textFieldAcc.setText("");
@@ -588,14 +592,25 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void fromAccountCBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fromAccountCBMouseClicked
 
-        
-        
 
     }//GEN-LAST:event_fromAccountCBMouseClicked
 
     private void fromAccountCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromAccountCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fromAccountCBActionPerformed
+
+    private void InRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InRadioButtonMouseClicked
+
+        boolean selected = true;
+        boolean income = true;
+
+        if (selected = true) {
+            income = true;
+        }
+        
+        
+
+    }//GEN-LAST:event_InRadioButtonMouseClicked
 
     /**
      * @param args the command line arguments
