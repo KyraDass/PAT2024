@@ -275,6 +275,8 @@ public class GoalsPopup extends javax.swing.JFrame {
             Logger.getLogger(GoalsPopup.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
+        
     }//GEN-LAST:event_goalsCompletedButtonMouseClicked
 
     /**
