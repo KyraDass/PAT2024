@@ -68,9 +68,9 @@ public class GoalsManager {
        
         String line = "";
         if(goalsSc.hasNext()){
-            line = goalsSc.nextLine() ;
+            line = goalsSc.nextLine() +" " ;
         }
-        line = line + " " + goals;
+        line = line + goals;
 
         FileWriter goalsFileWriter = new FileWriter(goalsData);
         PrintWriter pw = new PrintWriter(goalsFileWriter);
@@ -88,9 +88,9 @@ public class GoalsManager {
         Scanner completedGoalsSc = new Scanner(completeGoalsFile);
         String line = "";
         if(completedGoalsSc.hasNext()){
-            line =completedGoalsSc.nextLine() ;
+            line =completedGoalsSc.nextLine() +" ";
         }
-        line = line + " " + goal;
+        line = line + goal;
 
         FileWriter completedGoalsFileWriter = new FileWriter(completedGoalsData);
         PrintWriter pw = new PrintWriter(completedGoalsFileWriter);
@@ -113,7 +113,7 @@ public class GoalsManager {
 
         }
 
-        goalsSc = new Scanner(completedGoalsData);
+        goalsSc = new Scanner(goalsFile);
         String[] goals = new String[count];
         for (int i = 0; i < count; i++) {
             goals[i] = goalsSc.next();
