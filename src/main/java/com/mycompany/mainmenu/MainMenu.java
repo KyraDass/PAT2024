@@ -29,10 +29,14 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        inOutButtonGroup.add(inRadioButton);
+        inOutButtonGroup.add(outRadioButton);
+        inRadioButton.setSelected(true);
     }
 
     public void updateAccountsComponents() throws FileNotFoundException {
-        String[] accounts = AccountsManager.getAccounts();
+        String[] accounts = AccountsManager.getAccountNames();
 
         DefaultListModel listModel = new DefaultListModel();
         for (int i = 0; i < accounts.length; i++) {
@@ -57,9 +61,7 @@ public class MainMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        inOutButtonGroup = new javax.swing.ButtonGroup();
         AccountsPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         HeyLabel = new javax.swing.JLabel();
@@ -87,15 +89,11 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         MonthFilterCB = new javax.swing.JComboBox<>();
         YearFilterCB = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TransactionTable = new javax.swing.JTable();
         NewTransactionLabel = new javax.swing.JLabel();
         FromLabel = new javax.swing.JLabel();
         ToLabel = new javax.swing.JLabel();
-        InRadioButton = new javax.swing.JRadioButton();
-        OutRadioButton = new javax.swing.JRadioButton();
-        AmountCB = new javax.swing.JComboBox<>();
-        CategoryList = new java.awt.List();
+        inRadioButton = new javax.swing.JRadioButton();
+        outRadioButton = new javax.swing.JRadioButton();
         DateLabel = new javax.swing.JLabel();
         CategoryLabel = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
@@ -103,17 +101,12 @@ public class MainMenu extends javax.swing.JFrame {
         DeleteButton = new javax.swing.JButton();
         fromAccountCB = new javax.swing.JComboBox<>();
         toAccountCB = new javax.swing.JComboBox<>();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        amountTextField = new javax.swing.JTextField();
+        dateTextField = new javax.swing.JTextField();
+        categoryTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -232,12 +225,12 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(GoalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         AccountsPane.addTab("Dashboard", jPanel1);
 
-        jPanel4.setBackground(new java.awt.Color(139, 195, 132));
+        jPanel4.setBackground(new java.awt.Color(246, 246, 238));
 
         accountsList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -307,12 +300,12 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DeleteButton2)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         AccountsPane.addTab("Accounts", jPanel4);
 
-        jPanel3.setBackground(new java.awt.Color(102, 204, 0));
+        jPanel3.setBackground(new java.awt.Color(172, 209, 191));
 
         MonthFilterCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         MonthFilterCB.addActionListener(new java.awt.event.ActionListener() {
@@ -323,43 +316,15 @@ public class MainMenu extends javax.swing.JFrame {
 
         YearFilterCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        TransactionTable.setAutoCreateColumnsFromModel(false);
-        TransactionTable.setBackground(new java.awt.Color(51, 153, 255));
-        TransactionTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Date", "Account", "Amount", "Expense/Income", "Category"
-            }
-        ));
-        jScrollPane3.setViewportView(TransactionTable);
-
         NewTransactionLabel.setText("New Transaction");
 
         FromLabel.setText("From:");
 
         ToLabel.setText("To:");
 
-        InRadioButton.setText("In");
-        InRadioButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                InRadioButtonMouseClicked(evt);
-            }
-        });
+        inRadioButton.setText("In");
 
-        OutRadioButton.setText("Out");
-
-        AmountCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        AmountCB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AmountCBActionPerformed(evt);
-            }
-        });
+        outRadioButton.setText("Out");
 
         DateLabel.setText("Date:");
 
@@ -387,18 +352,24 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         fromAccountCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        fromAccountCB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fromAccountCBMouseClicked(evt);
-            }
-        });
-        fromAccountCB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromAccountCBActionPerformed(evt);
-            }
-        });
 
         toAccountCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTable1.setBackground(new java.awt.Color(246, 246, 238));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Date", "Account", "Amount", "Type", "Category"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable1);
+
+        jLabel1.setText("Amount:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -411,42 +382,51 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(MonthFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(383, 383, 383)
+                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ToLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(InRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(OutRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(inRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(31, 31, 31))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(22, 22, 22)))
+                                .addComponent(outRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AmountCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CategoryList, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CategoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(amountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(categoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(41, 41, 41)
                         .addComponent(NewTransactionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(19, 19, 19)
                         .addComponent(FromLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(toAccountCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fromAccountCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,26 +449,30 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(toAccountCB, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InRadioButton)
-                            .addComponent(OutRadioButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AmountCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inRadioButton)
+                            .addComponent(outRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(2, 2, 2)
+                        .addComponent(amountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CategoryLabel)
-                        .addGap(1, 1, 1)
-                        .addComponent(CategoryList, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(categoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
                         .addComponent(DateLabel)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(AddButton)
                             .addComponent(CancelButton)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DeleteButton)
-                .addContainerGap())
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         AccountsPane.addTab("Transactions", jPanel3);
@@ -513,12 +497,28 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AmountCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmountCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AmountCBActionPerformed
-
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // Transaction
+
+        String fromAccount = (String) fromAccountCB.getSelectedItem();
+        String toAccount = (String) toAccountCB.getSelectedItem();
+
+        boolean isIn = inRadioButton.isSelected();
+        if (isIn = true) {
+            String type = "Income";
+        } else {
+            String type = "Expense";
+        }
+
+        String amount = amountTextField.getText();
+        int amountNumber = Integer.parseInt(amount);
+
+        String category = categoryTextField.getText();
+
+        String date = dateTextField.getText();
+        int dateNumber = Integer.parseInt(date);
+
+
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
@@ -590,28 +590,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_GoalsButtonActionPerformed
 
-    private void fromAccountCBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fromAccountCBMouseClicked
-
-
-    }//GEN-LAST:event_fromAccountCBMouseClicked
-
-    private void fromAccountCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromAccountCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromAccountCBActionPerformed
-
-    private void InRadioButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InRadioButtonMouseClicked
-
-        boolean selected = true;
-        boolean income = true;
-
-        if (selected = true) {
-            income = true;
-        }
-        
-        
-
-    }//GEN-LAST:event_InRadioButtonMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -654,44 +632,44 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private javax.swing.JButton AddButton2;
     private javax.swing.JLabel AllAccList;
-    private javax.swing.JComboBox<String> AmountCB;
     private javax.swing.JList<String> AmountList;
     private javax.swing.JButton CancelButton;
     private javax.swing.JLabel CategoryLabel;
-    private java.awt.List CategoryList;
     private javax.swing.JLabel DateLabel;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JButton DeleteButton2;
     private javax.swing.JLabel FromLabel;
     private javax.swing.JButton GoalsButton;
     private javax.swing.JLabel HeyLabel;
-    private javax.swing.JRadioButton InRadioButton;
     private javax.swing.JComboBox<String> MonthFilterCB;
     private javax.swing.JLabel NewTransactionLabel;
     private javax.swing.JLabel NotesLabel;
     private javax.swing.JTextArea NotesTextArea;
-    private javax.swing.JRadioButton OutRadioButton;
     private javax.swing.JLabel ToLabel;
     private javax.swing.JLabel TotalsLabel;
-    private javax.swing.JTable TransactionTable;
     private javax.swing.JComboBox<String> YearFilterCB;
     private javax.swing.JButton YearOverviewButton;
     private javax.swing.JLabel YearOverviewLabel;
     private javax.swing.JList<String> accountsList1;
     private javax.swing.JList<String> accountsList2;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JTextField amountTextField;
+    private javax.swing.JTextField categoryTextField;
+    private javax.swing.JTextField dateTextField;
     private javax.swing.JComboBox<String> fromAccountCB;
+    private javax.swing.ButtonGroup inOutButtonGroup;
+    private javax.swing.JRadioButton inRadioButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JRadioButton outRadioButton;
     private javax.swing.JTextField textFieldAcc;
     private javax.swing.JComboBox<String> toAccountCB;
     // End of variables declaration//GEN-END:variables
