@@ -19,7 +19,7 @@ public class AccountsManager {
     
     public static String fileName = "Data\\AccountList.txt";
 
-    public static String[] getAccounts() throws FileNotFoundException {
+    public static String[] getAccountNames() throws FileNotFoundException {
 
         File accountsFile = new File(fileName);
         Scanner accountSc = new Scanner(accountsFile);
@@ -72,5 +72,7 @@ public class AccountsManager {
         pw.write(line);
         pw.close();
     }
+    
+    
 
 }
