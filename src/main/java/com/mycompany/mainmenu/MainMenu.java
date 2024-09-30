@@ -382,13 +382,10 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(MonthFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(383, 383, 383)
-                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -502,12 +499,14 @@ public class MainMenu extends javax.swing.JFrame {
 
         String fromAccount = (String) fromAccountCB.getSelectedItem();
         String toAccount = (String) toAccountCB.getSelectedItem();
+        
+        String type = "";
 
         boolean isIn = inRadioButton.isSelected();
         if (isIn = true) {
-            String type = "Income";
+             type = "Income";
         } else {
-            String type = "Expense";
+             type = "Expense";
         }
 
         String amount = amountTextField.getText();
@@ -518,6 +517,7 @@ public class MainMenu extends javax.swing.JFrame {
         String date = dateTextField.getText();
         int dateNumber = Integer.parseInt(date);
 
+        TransactionManager.
 
     }//GEN-LAST:event_AddButtonActionPerformed
 
