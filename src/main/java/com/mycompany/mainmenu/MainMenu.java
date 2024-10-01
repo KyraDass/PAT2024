@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
 //import javax.swing.DefaultListModel;
@@ -22,17 +23,31 @@ public class MainMenu extends javax.swing.JFrame {
 
     public MainMenu() {
 
-        initComponents();
-
         try {
+            initComponents();
             updateAccountsComponents();
+            updateTransactionsComponents();
+            inOutButtonGroup.add(inRadioButton);
+            inOutButtonGroup.add(outRadioButton);
+            inRadioButton.setSelected(true);
+            
+            
+           
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        inOutButtonGroup.add(inRadioButton);
-        inOutButtonGroup.add(outRadioButton);
-        inRadioButton.setSelected(true);
+    }
+    
+    public void updateTransactionsComponents(){
+         
+        try {
+            String[] columnNames = TransactionManager.getColumnNames();
+            String[][] data = TransactionManager.getTranscationTableData();
+            DefaultTableModel model = new DefaultTableModel(data, columnNames);
+            jTable1.setModel(model);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void updateAccountsComponents() throws FileNotFoundException {
@@ -50,6 +65,7 @@ public class MainMenu extends javax.swing.JFrame {
         fromAccountCB.setModel(comboModel1);
         DefaultComboBoxModel comboModel2 = new DefaultComboBoxModel(accounts);
         toAccountCB.setModel(comboModel2);
+
     }
 
     /**
@@ -499,14 +515,14 @@ public class MainMenu extends javax.swing.JFrame {
 
         String fromAccount = (String) fromAccountCB.getSelectedItem();
         String toAccount = (String) toAccountCB.getSelectedItem();
-        
+
         String type = "";
 
         boolean isIn = inRadioButton.isSelected();
         if (isIn = true) {
-             type = "Income";
+            type = "Income";
         } else {
-             type = "Expense";
+            type = "Expense";
         }
 
         String amount = amountTextField.getText();
@@ -517,7 +533,6 @@ public class MainMenu extends javax.swing.JFrame {
         String date = dateTextField.getText();
         int dateNumber = Integer.parseInt(date);
 
-        TransactionManager.
 
     }//GEN-LAST:event_AddButtonActionPerformed
 
@@ -526,15 +541,17 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-//        try {
-//            //Transaction
-//            
-//            String selectedAccount = AccountsList1.getSelectedValue();
-//            ListManager.deleteAccount(selectedAccount);
-//            updateAccountsList1();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
+        try {
+            //Transaction
+            String selectedTransaction = jTable1.getName();
+            AccountsManager.deleteAccount(selectedTransaction);
+            updateTransactionsComponents();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_DeleteButtonActionPerformed
