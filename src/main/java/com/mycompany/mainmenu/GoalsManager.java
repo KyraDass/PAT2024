@@ -16,8 +16,8 @@ import java.util.Scanner;
  * @author kyrad
  */
 public class GoalsManager {
-    
-      public static String goalsData = "Data\\Goals.txt";
+
+    public static String goalsData = "Data\\Goals.txt";
 
     public static String[] getGoals() throws FileNotFoundException {
 
@@ -42,7 +42,7 @@ public class GoalsManager {
     }
 
     public static void deleteGoal(String goals) throws FileNotFoundException, IOException {
-        File goalsFile  = new File(GoalsManager.goalsData);
+        File goalsFile = new File(GoalsManager.goalsData);
         Scanner goalsSc = new Scanner(goalsFile);
 
         String line = "";
@@ -65,10 +65,10 @@ public class GoalsManager {
     public static void addGoal(String goals) throws FileNotFoundException, IOException {
         File goalsFile = new File(goalsData);
         Scanner goalsSc = new Scanner(goalsFile);
-       
+
         String line = "";
-        if(goalsSc.hasNext()){
-            line = goalsSc.nextLine() +" " ;
+        if (goalsSc.hasNext()) {
+            line = goalsSc.nextLine() + " ";
         }
         line = line + goals;
 
@@ -78,17 +78,16 @@ public class GoalsManager {
         pw.close();
     }
 
-    
-     public static String completedGoalsData = "Data\\completedGoals.txt";
-    
+    public static String completedGoalsData = "Data\\completedGoals.txt";
+
     public static void completeGoal(String goal) throws FileNotFoundException, IOException {
         deleteGoal(goal);
-       
+
         File completeGoalsFile = new File(completedGoalsData);
         Scanner completedGoalsSc = new Scanner(completeGoalsFile);
         String line = "";
-        if(completedGoalsSc.hasNext()){
-            line =completedGoalsSc.nextLine() +" ";
+        if (completedGoalsSc.hasNext()) {
+            line = completedGoalsSc.nextLine() + " ";
         }
         line = line + goal;
 
@@ -96,13 +95,12 @@ public class GoalsManager {
         PrintWriter pw = new PrintWriter(completedGoalsFileWriter);
         pw.write(line);
         pw.close();
-        
-       
+
     }
-    
-     public static String[] getCompletedGoals() throws FileNotFoundException, IOException {
-         
-         File goalsFile = new File(completedGoalsData);
+
+    public static String[] getCompletedGoals() throws FileNotFoundException, IOException {
+
+        File goalsFile = new File(completedGoalsData);
         Scanner goalsSc = new Scanner(goalsFile);
 
         int count = 0;
@@ -120,7 +118,31 @@ public class GoalsManager {
 
         }
         return goals;
-       
+
     }
+
     
+    public static void deleteCompletedGoal(String goals) throws FileNotFoundException, IOException {
+
+        File goalsFile = new File(GoalsManager.completedGoalsData);
+        Scanner goalsSc = new Scanner(goalsFile);
+
+        String line = "";
+        while (goalsSc.hasNext()) {
+            String currentGoal = goalsSc.next();
+            if (!currentGoal.equals(goals)) {
+                line = line + currentGoal + " ";
+
+            }
+            
+
+        }
+
+            FileWriter goalsFileWriter = new FileWriter(GoalsManager.completedGoalsData);
+            PrintWriter pw = new PrintWriter(goalsFileWriter);
+            pw.write(line);
+            pw.close();
+
+    }
+
 }
