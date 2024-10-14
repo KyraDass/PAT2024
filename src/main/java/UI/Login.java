@@ -5,6 +5,7 @@
 package UI;
 
 import backend.AccountsManager;
+import backend.UserManager;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,7 +25,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
 
-        updateUserComponents();
 
     }
 
@@ -43,9 +43,9 @@ public class Login extends javax.swing.JFrame {
         RightPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PassLabel = new javax.swing.JLabel();
-        EmailField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         usernameLabel = new javax.swing.JLabel();
-        PasswordField = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
         LoginButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         SignUpButton = new javax.swing.JButton();
@@ -87,6 +87,12 @@ public class Login extends javax.swing.JFrame {
 
         usernameLabel.setText("Username");
 
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+
         LoginButton.setText("Login");
         LoginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,9 +123,9 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(RightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(EmailField, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                .addComponent(emailField, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                 .addComponent(PassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PasswordField))
+                                .addComponent(passwordField))
                             .addGroup(RightPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,11 +143,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PassLabel)
                 .addGap(18, 18, 18)
-                .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(LoginButton)
                 .addGap(35, 35, 35)
@@ -202,32 +208,28 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
-        
-            // TODO add your handling code
-            MainMenu mm = new MainMenu();
-            mm.show();
+        try {
+            String user = emailField.getText();
+            String pass = passwordField.getText();
+            boolean isValid = UserManager.isValid(user, pass);
 
-            dispose();
+            if (isValid) {
+                // TODO add your handling code
+                MainMenu mm = new MainMenu();
+                mm.setVisible(true);
 
-//        try {
-//            String newEmail = EmailField.getText();
-//            EmailField.setText("");
-//            AccountsManager.addAccount(newEmail);
-//            updateUserComponents();
-//
-//            String newPassword = PasswordField.getText();
-//            PasswordField.setText("");
-//            AccountsManager.addAccount(newPassword);
-//            updateUserComponents();
-//
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+                this.dispose();
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }//GEN-LAST:event_LoginButtonMouseClicked
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -263,21 +265,19 @@ public class Login extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField EmailField;
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel PassLabel;
-    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JPanel RightPanel;
     private javax.swing.JButton SignUpButton;
+    private javax.swing.JTextField emailField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 
-    private void updateUserComponents() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }
