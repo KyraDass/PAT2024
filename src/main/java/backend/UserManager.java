@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.plaf.RootPaneUI;
 
 /**
  *
@@ -33,8 +35,15 @@ public class UserManager {
             String password = userSc.next();
 
             if (name.equals(inUsername) && password.equals(inPassword)) {
+                JOptionPane.showMessageDialog(null, "succesfully loged in");
                 return true;
             }
+            else{
+                
+                JOptionPane.showMessageDialog(null, "Username or password is invalid");
+               
+            }
+            
         }
 
         return false;
