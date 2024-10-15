@@ -28,7 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
         try {
             initComponents();
             updateAccountsComponents();
-            //updateTransactionsComponents();
+            updateTransactionsComponents();
             inOutButtonGroup.add(inRadioButton);
             inOutButtonGroup.add(outRadioButton);
             inRadioButton.setSelected(true);
