@@ -65,9 +65,10 @@ public class UserManager {
             String password = lineSc.next();
             
             if (name.equals(inUsername)) {
+            JOptionPane.showMessageDialog(null, "Username or password is invalid");
                 return false;
             }
-            
+            JOptionPane.showMessageDialog(null, "successfully signed in");
             output += line + "\n";
         }
         
