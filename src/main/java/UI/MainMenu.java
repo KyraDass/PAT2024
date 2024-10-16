@@ -1,6 +1,7 @@
 package UI;
 
 import backend.AccountsManager;
+import backend.NotesManager;
 import backend.TransactionManager;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         try {
             initComponents();
+            updateNotesComponents();
             updateAccountsComponents();
             updateTransactionsComponents();
             inOutButtonGroup.add(inRadioButton);
@@ -67,6 +69,19 @@ public class MainMenu extends javax.swing.JFrame {
         toAccountCB.setModel(comboModel2);
 
     }
+    
+    public void updateNotesComponents() throws FileNotFoundException {
+        String[] notes = NotesManager.getNote();
+
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < notes.length; i++) {
+            listModel.addElement(notes[i]);
+
+        }
+        notesList.setModel(listModel);
+       
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,10 +98,8 @@ public class MainMenu extends javax.swing.JFrame {
         HeyLabel = new javax.swing.JLabel();
         AccountsLabel1 = new javax.swing.JLabel();
         GoalsButton = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        progressBar = new javax.swing.JProgressBar();
         NotesLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        NotesTextArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         accountsList1 = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -94,6 +107,11 @@ public class MainMenu extends javax.swing.JFrame {
         TotalsLabel = new javax.swing.JLabel();
         YearOverviewLabel = new javax.swing.JLabel();
         YearOverviewButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        notesList = new javax.swing.JList<>();
+        notesAdd = new javax.swing.JButton();
+        notesDelete = new javax.swing.JButton();
+        notesTextField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         accountsList2 = new javax.swing.JList<>();
@@ -103,8 +121,6 @@ public class MainMenu extends javax.swing.JFrame {
         AddButton2 = new javax.swing.JButton();
         textFieldAcc = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        MonthFilterCB = new javax.swing.JComboBox<>();
-        YearFilterCB = new javax.swing.JComboBox<>();
         NewTransactionLabel = new javax.swing.JLabel();
         FromLabel = new javax.swing.JLabel();
         ToLabel = new javax.swing.JLabel();
@@ -134,8 +150,10 @@ public class MainMenu extends javax.swing.JFrame {
         HeyLabel.setBackground(new java.awt.Color(51, 153, 255));
         HeyLabel.setText("Hey,");
 
+        AccountsLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AccountsLabel1.setText("Accounts");
 
+        GoalsButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         GoalsButton.setText("Goals");
         GoalsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,13 +161,10 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jProgressBar1.setBackground(new java.awt.Color(255, 255, 255));
+        progressBar.setBackground(new java.awt.Color(255, 255, 255));
 
+        NotesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         NotesLabel.setText("Notes");
-
-        NotesTextArea.setColumns(20);
-        NotesTextArea.setRows(5);
-        jScrollPane1.setViewportView(NotesTextArea);
 
         accountsList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -170,11 +185,40 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(AmountList);
 
+        TotalsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         TotalsLabel.setText("Totals");
 
+        YearOverviewLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         YearOverviewLabel.setText("Year Overview :");
 
         YearOverviewButton.setText("Click here!");
+
+        notesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(notesList);
+
+        notesAdd.setText("Add");
+        notesAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notesAddActionPerformed(evt);
+            }
+        });
+
+        notesDelete.setText("Delete");
+        notesDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notesDeleteActionPerformed(evt);
+            }
+        });
+
+        notesTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notesTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,16 +242,22 @@ public class MainMenu extends javax.swing.JFrame {
                                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(61, 61, 61)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                                    .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                                     .addComponent(GoalsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(YearOverviewButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(YearOverviewLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(73, 73, 73)
+                        .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(notesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(notesAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
+                                .addComponent(notesDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(NotesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,32 +266,35 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(HeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(AccountsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TotalsLabel)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NotesLabel)))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AccountsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TotalsLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(YearOverviewLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(YearOverviewButton))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addComponent(YearOverviewLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(YearOverviewButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(GoalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(122, Short.MAX_VALUE))
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(NotesLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(notesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(notesAdd)
+                    .addComponent(notesDelete))
+                .addGap(18, 18, 18))
         );
 
         AccountsPane.addTab("Dashboard", jPanel1);
@@ -270,6 +323,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        AddAccLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AddAccLabel.setText("Add an account :");
 
         AddButton2.setText("Add");
@@ -328,15 +382,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(172, 209, 191));
 
-        MonthFilterCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        MonthFilterCB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MonthFilterCBActionPerformed(evt);
-            }
-        });
-
-        YearFilterCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        NewTransactionLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         NewTransactionLabel.setText("New Transaction");
 
         FromLabel.setText("From:");
@@ -396,12 +442,6 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(YearFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(MonthFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -449,13 +489,9 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MonthFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(YearFilterCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGap(42, 42, 42)
                         .addComponent(NewTransactionLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -486,7 +522,7 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(addButtonTransaction)
                             .addComponent(CancelButton)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(46, 46, 46)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DeleteButtonTransaction)
@@ -571,10 +607,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_DeleteButtonTransactionActionPerformed
 
-    private void MonthFilterCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthFilterCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MonthFilterCBActionPerformed
-
     private void accountsList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_accountsList2ValueChanged
 
 
@@ -628,6 +660,43 @@ public class MainMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_AddButton2ActionPerformed
 
+    private void notesAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesAddActionPerformed
+       
+         try {
+            String newNote = notesTextField.getText();
+            notesTextField.setText("");
+            NotesManager.addNote(newNote);
+            updateNotesComponents();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_notesAddActionPerformed
+
+    private void notesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_notesTextFieldActionPerformed
+
+    private void notesDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesDeleteActionPerformed
+      
+         try {
+            
+            String selectedNote = notesList.getSelectedValue();
+            NotesManager.deleteNote(selectedNote);
+            updateNotesComponents();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_notesDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -678,13 +747,10 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel FromLabel;
     private javax.swing.JButton GoalsButton;
     private javax.swing.JLabel HeyLabel;
-    private javax.swing.JComboBox<String> MonthFilterCB;
     private javax.swing.JLabel NewTransactionLabel;
     private javax.swing.JLabel NotesLabel;
-    private javax.swing.JTextArea NotesTextArea;
     private javax.swing.JLabel ToLabel;
     private javax.swing.JLabel TotalsLabel;
-    private javax.swing.JComboBox<String> YearFilterCB;
     private javax.swing.JButton YearOverviewButton;
     private javax.swing.JLabel YearOverviewLabel;
     private javax.swing.JList<String> accountsList1;
@@ -700,14 +766,18 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton notesAdd;
+    private javax.swing.JButton notesDelete;
+    private javax.swing.JList<String> notesList;
+    private javax.swing.JTextField notesTextField;
     private javax.swing.JRadioButton outRadioButton;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextField textFieldAcc;
     private javax.swing.JComboBox<String> toAccountCB;
     // End of variables declaration//GEN-END:variables
