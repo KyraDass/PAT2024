@@ -87,6 +87,8 @@ public class TransactionManager {
         File transactionFile = new File(fileName);
         Scanner transactionSc = new Scanner(transactionFile);
         String line = transactionSc.nextLine() + " " + transaction;
+        
+        
 
         FileWriter accountFileWriter = new FileWriter(fileName);
         PrintWriter pw = new PrintWriter(accountFileWriter);
