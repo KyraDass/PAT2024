@@ -35,12 +35,11 @@ public class UserManager {
             String password = userSc.next();
 
             if (name.equals(inUsername) && password.equals(inPassword)) {
-                JOptionPane.showMessageDialog(null, "succesfully loged in");
+              //  JOptionPane.showMessageDialog(null, "succesfully logged in");
                 return true;
             }
             else{
-                
-                JOptionPane.showMessageDialog(null, "Username or password is invalid");
+              //  JOptionPane.showMessageDialog(null, "Username or password is invalid");
                
             }
             
@@ -65,10 +64,10 @@ public class UserManager {
             String password = lineSc.next();
             
             if (name.equals(inUsername)) {
-            JOptionPane.showMessageDialog(null, "Username or password is invalid");
+            //JOptionPane.showMessageDialog(null, "Username or password is invalid");
                 return false;
-            }
-            JOptionPane.showMessageDialog(null, "successfully signed in");
+            } 
+            //JOptionPane.showMessageDialog(null, "successfully signed in");
             output += line + "\n";
         }
         
