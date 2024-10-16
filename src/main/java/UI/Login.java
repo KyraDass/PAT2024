@@ -52,6 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LOGIN");
+        setBackground(new java.awt.Color(172, 209, 191));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
 
@@ -219,6 +220,10 @@ public class Login extends javax.swing.JFrame {
                 mm.setVisible(true);
 
                 this.dispose();
+                JOptionPane.showMessageDialog(this, "succesfully logged in");
+               
+            } else {
+                JOptionPane.showMessageDialog(this, "Username or password is invalid");
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
