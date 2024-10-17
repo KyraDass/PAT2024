@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
@@ -192,6 +193,11 @@ public class MainMenu extends javax.swing.JFrame {
         YearOverviewLabel.setText("Year Overview :");
 
         YearOverviewButton.setText("Click here!");
+        YearOverviewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                YearOverviewButtonActionPerformed(evt);
+            }
+        });
 
         notesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -574,9 +580,9 @@ public class MainMenu extends javax.swing.JFrame {
             
             String date = dateTextField.getText();
             
-            String transaction = date +  fromAccount  + " " + toAccount + " " + amount + " " + type + "" + category;
+            String transaction = date + " " +  fromAccount  + " " + toAccount + " " + amount + " " + type + " " + category;
             TransactionManager.addTransaction(transaction);
-            
+            updateTransactionsComponents();
             dateTextField.setText("");
              categoryTextField.setText("");
               amountTextField.setText("");
@@ -696,6 +702,12 @@ public class MainMenu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_notesDeleteActionPerformed
+
+    private void YearOverviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YearOverviewButtonActionPerformed
+      
+        JOptionPane.showMessageDialog(null, "");
+        
+    }//GEN-LAST:event_YearOverviewButtonActionPerformed
 
     /**
      * @param args the command line arguments
