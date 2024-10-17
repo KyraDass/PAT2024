@@ -47,12 +47,14 @@ public class TransactionManager {
         for (int row = 0; row < count; row++) {
             String transaction = fileSc.nextLine();
             Scanner transactionSc = new Scanner(transaction);
+            String line = transactionSc.nextLine();
+            Scanner lineSc = new Scanner(line);
 
-            String dateNumber = transactionSc.next();
-            String account = transactionSc.next();
-            String amountNumber = transactionSc.next();
-            String type = transactionSc.next();
-            String category = transactionSc.next();
+            String dateNumber = lineSc.next();
+            String account = lineSc.next();
+            String amountNumber = lineSc.next();
+            String type = lineSc.next();
+            String category = lineSc.next();
 
             data[row][0] = dateNumber;
             data[row][1] = account;
@@ -85,15 +87,9 @@ public class TransactionManager {
     
     public static void addTransaction(String transaction) throws FileNotFoundException, IOException {
         File transactionFile = new File(fileName);
-        Scanner transactionSc = new Scanner(transactionFile);
-        String line = transactionSc.nextLine() + " " + transaction;
-        
-        
-
-        FileWriter accountFileWriter = new FileWriter(fileName);
-        PrintWriter pw = new PrintWriter(accountFileWriter);
-        pw.write(line);
-        pw.close();
+        FileWriter fw = new FileWriter(transactionFile, true);
+        fw.write("\n" + transaction);
+        fw.close();
     }
     
 
