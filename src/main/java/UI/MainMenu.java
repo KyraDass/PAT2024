@@ -70,7 +70,7 @@ public class MainMenu extends javax.swing.JFrame {
         toAccountCB.setModel(comboModel2);
 
     }
-    
+
     public void updateNotesComponents() throws FileNotFoundException {
         String[] notes = NotesManager.getNote();
 
@@ -80,7 +80,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         }
         notesList.setModel(listModel);
-       
 
     }
 
@@ -96,7 +95,7 @@ public class MainMenu extends javax.swing.JFrame {
         inOutButtonGroup = new javax.swing.ButtonGroup();
         AccountsPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        HeyLabel = new javax.swing.JLabel();
+        heyLabel = new javax.swing.JLabel();
         AccountsLabel1 = new javax.swing.JLabel();
         GoalsButton = new javax.swing.JButton();
         progressBar = new javax.swing.JProgressBar();
@@ -148,8 +147,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(246, 246, 238));
 
-        HeyLabel.setBackground(new java.awt.Color(51, 153, 255));
-        HeyLabel.setText("Hey,");
+        heyLabel.setBackground(new java.awt.Color(51, 153, 255));
+        heyLabel.setText("Hey,");
 
         AccountsLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AccountsLabel1.setText("Accounts");
@@ -233,7 +232,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(heyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -268,32 +267,34 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(HeyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AccountsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TotalsLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addComponent(YearOverviewLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(YearOverviewButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(GoalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(83, 83, 83)
                         .addComponent(NotesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(heyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(AccountsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TotalsLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addComponent(YearOverviewLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(YearOverviewButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(GoalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(notesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -391,16 +392,22 @@ public class MainMenu extends javax.swing.JFrame {
         NewTransactionLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         NewTransactionLabel.setText("New Transaction");
 
+        FromLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         FromLabel.setText("From:");
 
+        ToLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ToLabel.setText("To:");
 
+        inRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         inRadioButton.setText("In");
 
+        outRadioButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         outRadioButton.setText("Out");
 
+        DateLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         DateLabel.setText("Date:");
 
+        CategoryLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CategoryLabel.setText("Category:");
 
         addButtonTransaction.setText("Add");
@@ -431,17 +438,18 @@ public class MainMenu extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(246, 246, 238));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Account", "Amount", "Type", "Category"
+                "Date", "Account In", "Account Out", "Amount", "Type", "Category"
             }
         ));
         jScrollPane6.setViewportView(jTable1);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Amount:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -460,13 +468,8 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(ToLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(inRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(31, 31, 31))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(22, 22, 22)))
+                                .addComponent(inRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
                                 .addComponent(outRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
@@ -479,7 +482,8 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(categoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(categoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(NewTransactionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -560,33 +564,33 @@ public class MainMenu extends javax.swing.JFrame {
     private void addButtonTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonTransactionActionPerformed
         try {
             // Transaction
-            
+
             String fromAccount = (String) fromAccountCB.getSelectedItem();
             String toAccount = (String) toAccountCB.getSelectedItem();
-            
+
             String type = "";
-            
+
             boolean isIn = inRadioButton.isSelected();
             if (isIn = true) {
                 type = "Income";
             } else {
                 type = "Expense";
             }
-            
+
             String amount = amountTextField.getText();
             //int amountNumber = Integer.parseInt(amount);
-            
+
             String category = categoryTextField.getText();
-            
+
             String date = dateTextField.getText();
-            
-            String transaction = date + " " +  fromAccount  + " " + toAccount + " " + amount + " " + type + " " + category;
+
+            String transaction = date + " " + fromAccount + " " + toAccount + " " + amount + " " + type + " " + category;
             TransactionManager.addTransaction(transaction);
             updateTransactionsComponents();
             dateTextField.setText("");
-             categoryTextField.setText("");
-              amountTextField.setText("");
-            
+            categoryTextField.setText("");
+            amountTextField.setText("");
+
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -601,9 +605,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         try {
             int row = jTable1.getSelectedRow();
-            String transaction = jTable1.getValueAt(row, 0) + " " + jTable1.getValueAt(row, 1) + " " +
-                    jTable1.getValueAt(row, 2) +" " + jTable1.getValueAt(row, 3) + " "+jTable1.getValueAt(row, 4);
-            
+            String transaction = jTable1.getValueAt(row, 0) + " " + jTable1.getValueAt(row, 1) + " "
+                    + jTable1.getValueAt(row, 2) + " " + jTable1.getValueAt(row, 3) + " " + jTable1.getValueAt(row, 4)
+                    + " " + jTable1.getValueAt(row, 5);
+
             TransactionManager.deleteTransaction(transaction);
             updateTransactionsComponents();
         } catch (IOException ex) {
@@ -662,13 +667,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
         // TODO add your handling code here:
-       
-        
+
+
     }//GEN-LAST:event_AddButton2ActionPerformed
 
     private void notesAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesAddActionPerformed
-       
-         try {
+
+        try {
             String newNote = notesTextField.getText();
             notesTextField.setText("");
             NotesManager.addNote(newNote);
@@ -678,10 +683,8 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_notesAddActionPerformed
 
     private void notesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesTextFieldActionPerformed
@@ -689,9 +692,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_notesTextFieldActionPerformed
 
     private void notesDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesDeleteActionPerformed
-      
-         try {
-            
+
+        try {
+
             String selectedNote = notesList.getSelectedValue();
             NotesManager.deleteNote(selectedNote);
             updateNotesComponents();
@@ -700,13 +703,12 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_notesDeleteActionPerformed
 
     private void YearOverviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YearOverviewButtonActionPerformed
-      
-        JOptionPane.showMessageDialog(null, "");
-        
+
+
     }//GEN-LAST:event_YearOverviewButtonActionPerformed
 
     /**
@@ -758,7 +760,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton DeleteButtonTransaction;
     private javax.swing.JLabel FromLabel;
     private javax.swing.JButton GoalsButton;
-    private javax.swing.JLabel HeyLabel;
     private javax.swing.JLabel NewTransactionLabel;
     private javax.swing.JLabel NotesLabel;
     private javax.swing.JLabel ToLabel;
@@ -772,6 +773,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTextField categoryTextField;
     private javax.swing.JTextField dateTextField;
     private javax.swing.JComboBox<String> fromAccountCB;
+    private javax.swing.JLabel heyLabel;
     private javax.swing.ButtonGroup inOutButtonGroup;
     private javax.swing.JRadioButton inRadioButton;
     private javax.swing.JLabel jLabel1;
