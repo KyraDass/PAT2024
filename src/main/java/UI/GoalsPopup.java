@@ -34,41 +34,35 @@ public class GoalsPopup extends javax.swing.JFrame {
 
     public void updateGoalsComponents() throws FileNotFoundException, IOException {
         String[] goals = GoalsManager.getGoals();
+        //gets the goals from the goals manager
 
         DefaultListModel goalsListModel = new DefaultListModel();
         for (int i = 0; i < goals.length; i++) {
             goalsListModel.addElement(goals[i]);
+            //added each goals as an element to the goalsListModel.
 
         }
         goalsList.setModel(goalsListModel);
+        //sets the goals list to the updated version
 
-        
-        
         String[] completedGoals = GoalsManager.getCompletedGoals();
 
+        // gets the completed goals
         DefaultListModel completedGoalsListModel = new DefaultListModel();
         for (int i = 0; i < completedGoals.length; i++) {
             completedGoalsListModel.addElement(completedGoals[i]);
-
+            //added each completed goal as an element to the completedGoalsListModel.
         }
         completedGoalsList.setModel(completedGoalsListModel);
-        if(goals == completedGoals){
-            
+        if (goals == completedGoals) {
+
             MainMenu m = new MainMenu();
             m.setVisible(true);
             dispose();
-            
-            
-            
-            
+
         }
 
     }
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,10 +120,10 @@ public class GoalsPopup extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(172, 209, 191));
+        setBackground(new java.awt.Color(246, 246, 238));
 
         jLabel1.setBackground(new java.awt.Color(172, 209, 191));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Goals");
 
         AddGoalButton.setText("Add");
@@ -146,6 +140,9 @@ public class GoalsPopup extends javax.swing.JFrame {
             }
         });
 
+        goalsTextField.setBackground(new java.awt.Color(246, 246, 238));
+
+        goalsList.setBackground(new java.awt.Color(172, 209, 191));
         goalsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -153,6 +150,7 @@ public class GoalsPopup extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(goalsList);
 
+        completedGoalsList.setBackground(new java.awt.Color(172, 209, 191));
         completedGoalsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -198,70 +196,64 @@ public class GoalsPopup extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(AddGoalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(goalsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(41, 41, 41))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goalsCompletedButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(GoalsDeleteButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backGoalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(removeGoal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(backGoalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AddGoalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(goalsCompletedButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(GoalsDeleteButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(removeGoal, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(goalsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(goalsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(AddGoalButton)
-                        .addGap(25, 25, 25)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GoalsDeleteButton)
-                    .addComponent(goalsCompletedButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backGoalButton)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removeGoal)
-                .addGap(11, 11, 11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(57, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backGoalButton)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(goalsCompletedButton)
+                            .addComponent(GoalsDeleteButton)
+                            .addComponent(removeGoal))
+                        .addGap(21, 21, 21))))
         );
 
         pack();
@@ -280,6 +272,8 @@ public class GoalsPopup extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        // When the button is clicked this code runs and adds the text entered in the text field to the goals list
     }//GEN-LAST:event_AddGoalButtonActionPerformed
 
     private void GoalsDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoalsDeleteButtonActionPerformed
@@ -287,13 +281,17 @@ public class GoalsPopup extends javax.swing.JFrame {
         try {
             //Account
             String selectedGoal = goalsList.getSelectedValue();
+            //gets the selected goal 
             GoalsManager.deleteGoal(selectedGoal);
+
             updateGoalsComponents();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        // When the button is clicked this code runs and deletes the text selected from the goals list
     }//GEN-LAST:event_GoalsDeleteButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -309,33 +307,36 @@ public class GoalsPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void completedGoalsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completedGoalsListMouseClicked
-       
-        
+
+
     }//GEN-LAST:event_completedGoalsListMouseClicked
 
     private void goalsCompletedButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goalsCompletedButtonMouseClicked
-       
+
         try {
             String goal = goalsList.getSelectedValue();
+            //gets the selected goal
             GoalsManager.completeGoal(goal);
+           
             updateGoalsComponents();
-            
-            
+            //updates the completed goals list
+
         } catch (IOException ex) {
             Logger.getLogger(GoalsPopup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
+        // If the completed button is clicked,then the goals will be added to the completed goals list
+
     }//GEN-LAST:event_goalsCompletedButtonMouseClicked
 
     private void backGoalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backGoalButtonActionPerformed
-         
+
         this.hide();
         MainMenu frm = new MainMenu();
         frm.setVisible(true);
-        
-        
+        //sets the screen back to the main menu when clicked
+
+
     }//GEN-LAST:event_backGoalButtonActionPerformed
 
     private void backGoalButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backGoalButtonMouseClicked
@@ -343,17 +344,22 @@ public class GoalsPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_backGoalButtonMouseClicked
 
     private void removeGoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeGoalActionPerformed
-        
+
         try {
             String selectedGoal = completedGoalsList.getSelectedValue();
+            //gets the selected goal
             GoalsManager.deleteCompletedGoal(selectedGoal);
+
             updateGoalsComponents();
+            //updates the completed goals list
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+        //this code removes a selected goal from the completed goals list and from the text file
+
     }//GEN-LAST:event_removeGoalActionPerformed
 
     /**
@@ -414,5 +420,4 @@ public class GoalsPopup extends javax.swing.JFrame {
     private javax.swing.JButton removeGoal;
     // End of variables declaration//GEN-END:variables
 
-   
 }
