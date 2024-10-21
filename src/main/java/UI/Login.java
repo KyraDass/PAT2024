@@ -222,6 +222,7 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 JOptionPane.showMessageDialog(this, "succesfully logged in");
                
+               
             } else {
                 JOptionPane.showMessageDialog(this, "Username or password is invalid");
             }
