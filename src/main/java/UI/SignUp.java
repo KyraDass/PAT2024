@@ -131,23 +131,25 @@ public class SignUp extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-         try {
+
+        try {
             String user = signUpUserTextField.getText();
             String pass = passSignUpTextField.getText();
             boolean isValid = UserManager.addUser(user, pass);
+            //checks if the input is valid
 
             if (isValid) {
-               
+
                 MainMenu mm = new MainMenu();
                 mm.setVisible(true);
-
+//checks if the input is valid and if it is then takes the user to the main menu
                 this.dispose();
-                
+
                 JOptionPane.showMessageDialog(this, "Successfully signed in");
-                
+                //shows this message if input is valid
             } else {
                 JOptionPane.showMessageDialog(this, "Username or password is invalid");
+                //shows this message if input is not valid
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,10 +160,10 @@ public class SignUp extends javax.swing.JFrame {
 
     private void backSignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSignUpButtonActionPerformed
 
-       Login l = new Login();
-                l.setVisible(true);
+        Login l = new Login();
+        l.setVisible(true);
 
-                this.dispose();
+        this.dispose();
     }//GEN-LAST:event_backSignUpButtonActionPerformed
 
     /**

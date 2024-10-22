@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @author kyrad
  */
 public class AccountsManager {
-    
+
     public static String fileName = "Data\\AccountList.txt";
 
     public static String[] getAccountNames() throws FileNotFoundException {
@@ -24,6 +24,7 @@ public class AccountsManager {
         File accountsFile = new File(fileName);
         Scanner accountSc = new Scanner(accountsFile);
 
+        //scans the accounts list
         int count = 0;
         while (accountSc.hasNext()) {
             count++;
@@ -39,6 +40,8 @@ public class AccountsManager {
 
         }
         return account;
+
+        //this method retuns the account names
     }
 
     public static void deleteAccount(String account) throws FileNotFoundException, IOException {
@@ -53,6 +56,7 @@ public class AccountsManager {
 
             }
 
+            //gets the current acount and if not the same as the selected account then just leave it
             FileWriter accountFileWriter = new FileWriter(fileName);
             PrintWriter pw = new PrintWriter(accountFileWriter);
             pw.write(line);
@@ -61,6 +65,7 @@ public class AccountsManager {
         }
 
     }
+// this method scans to see if any of the accounts match the selected account to delete it from the list and to update the file
 
     public static void addAccount(String account) throws FileNotFoundException, IOException {
         File accountsFile = new File(fileName);
@@ -72,7 +77,6 @@ public class AccountsManager {
         pw.write(line);
         pw.close();
     }
-    
-    
 
+    //adds an account when text is added into a text field,goes to next line and then adds account name
 }

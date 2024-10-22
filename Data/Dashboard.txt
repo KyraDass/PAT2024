@@ -1,0 +1,23 @@
+Dashboard
+
+- progress bar
+- Amounts list
+- year overview
+- Hey,...
+
+
+Transaction
+- monthly + yearly filter
+- income + outcome
+- amount combo box
+- category
+- Date - calendar 
+
+Login 
+
+- create txt file
+- no same pass
+
+Sign up
+- create txt file
+- go to dashboard

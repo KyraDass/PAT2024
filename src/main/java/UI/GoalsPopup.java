@@ -25,6 +25,8 @@ public class GoalsPopup extends javax.swing.JFrame {
 
         try {
             updateGoalsComponents();
+
+            //links to the goal manager to update the list of goals
         } catch (FileNotFoundException ex) {
             Logger.getLogger(GoalsPopup.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -317,7 +319,7 @@ public class GoalsPopup extends javax.swing.JFrame {
             String goal = goalsList.getSelectedValue();
             //gets the selected goal
             GoalsManager.completeGoal(goal);
-           
+
             updateGoalsComponents();
             //updates the completed goals list
 

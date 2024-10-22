@@ -25,7 +25,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
 
-
     }
 
     /**
@@ -206,6 +205,8 @@ public class Login extends javax.swing.JFrame {
         SignUpFrame.pack();
         SignUpFrame.setLocationRelativeTo(null);
         this.dispose();
+
+        //when the sign up button is clicked it takes the user to the sign up screen and sets it visible.
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
@@ -213,18 +214,21 @@ public class Login extends javax.swing.JFrame {
             String user = emailField.getText();
             String pass = passwordField.getText();
             boolean isValid = UserManager.isValid(user, pass);
+            //get text entered from these textfields and check if they are valid
 
             if (isValid) {
                 // TODO add your handling code
                 MainMenu mm = new MainMenu();
                 mm.setVisible(true);
+                //if the input is okay then take them to the main menu
 
                 this.dispose();
                 JOptionPane.showMessageDialog(this, "succesfully logged in");
-               
-               
+                //show this message if the input is okay
+
             } else {
                 JOptionPane.showMessageDialog(this, "Username or password is invalid");
+                //or if not okay input show this message
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -285,5 +289,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 
-    
 }

@@ -40,6 +40,7 @@ public class GoalsManager {
         }
         return goals;
     }
+// reads all the goals in the file and returns them to the list
 
     public static void deleteGoal(String goals) throws FileNotFoundException, IOException {
         File goalsFile = new File(GoalsManager.goalsData);
@@ -50,6 +51,7 @@ public class GoalsManager {
             String currentGoal = goalsSc.next();
             if (!currentGoal.equals(goals)) {
                 line = line + currentGoal + " ";
+                //gets the current goal and if not the same as the selected account then just leave it
 
             }
 
@@ -69,6 +71,7 @@ public class GoalsManager {
         String line = "";
         if (goalsSc.hasNext()) {
             line = goalsSc.nextLine() + " ";
+            //keep going until end of line to go to next empty line
         }
         line = line + goals;
 
@@ -76,6 +79,7 @@ public class GoalsManager {
         PrintWriter pw = new PrintWriter(goalsFileWriter);
         pw.write(line);
         pw.close();
+        //when a goal is added,add it to a new line when it is written back to the file
     }
 
     public static String completedGoalsData = "Data\\completedGoals.txt";
@@ -90,12 +94,14 @@ public class GoalsManager {
             line = completedGoalsSc.nextLine() + " ";
         }
         line = line + goal;
+        //go to next line and then add completed goal
 
         FileWriter completedGoalsFileWriter = new FileWriter(completedGoalsData);
         PrintWriter pw = new PrintWriter(completedGoalsFileWriter);
         pw.write(line);
         pw.close();
 
+        // if text file has more input continue until last one and then go to next line and space.
     }
 
     public static String[] getCompletedGoals() throws FileNotFoundException, IOException {
@@ -119,9 +125,9 @@ public class GoalsManager {
         }
         return goals;
 
+        //if the goal is selected add it to the completed goals list
     }
 
-    
     public static void deleteCompletedGoal(String goals) throws FileNotFoundException, IOException {
 
         File goalsFile = new File(GoalsManager.completedGoalsData);
@@ -132,16 +138,16 @@ public class GoalsManager {
             String currentGoal = goalsSc.next();
             if (!currentGoal.equals(goals)) {
                 line = line + currentGoal + " ";
+                //gets the current goal and if not the same as the selected account then just leave it
 
             }
-            
 
         }
 
-            FileWriter goalsFileWriter = new FileWriter(GoalsManager.completedGoalsData);
-            PrintWriter pw = new PrintWriter(goalsFileWriter);
-            pw.write(line);
-            pw.close();
+        FileWriter goalsFileWriter = new FileWriter(GoalsManager.completedGoalsData);
+        PrintWriter pw = new PrintWriter(goalsFileWriter);
+        pw.write(line);
+        pw.close();
 
     }
 
